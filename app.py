@@ -5,6 +5,7 @@ from pathlib import Path
 from src.data_loader import load_problem_data
 from src.genetic_algorithm import run_genetic_algorithm
 from src.timetable_storage import save_timetable
+from database.db import initialize_database
 
 st.set_page_config(
     page_title="University Timetable Optimizer",
@@ -194,7 +195,7 @@ def setup_tables():
                 ALTER TABLE class_sessions
                 ADD COLUMN sessions_per_week INTEGER NOT NULL DEFAULT 1
             """)
-
+initialize_database()
 setup_tables()
 
 st.title("📅 University Timetable Optimization System")
